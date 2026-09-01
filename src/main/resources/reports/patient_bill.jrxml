@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?><jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="patient_bill" language="java" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="30" bottomMargin="30">
+
+    <parameter name="TITLE" class="java.lang.String"/>
+    <parameter name="CLINIC_NAME" class="java.lang.String"/>
+    <parameter name="CLINIC_ADDRESS" class="java.lang.String"/>
+    <parameter name="CLINIC_PHONE" class="java.lang.String"/>
+    <parameter name="CLINIC_EMAIL" class="java.lang.String"/>
+    <parameter name="CLINIC_TIN" class="java.lang.String"/>
+    <parameter name="CURRENCY" class="java.lang.String"/>
+    <parameter name="GENERATED_AT" class="java.lang.String"/>
+
+    <field name="billNumber" class="java.lang.String"/>
+    <field name="billDate" class="java.lang.String"/>
+    <field name="appointmentNumber" class="java.lang.String"/>
+    <field name="patientName" class="java.lang.String"/>
+    <field name="patientRegNo" class="java.lang.String"/>
+    <field name="patientAddress" class="java.lang.String"/>
+    <field name="patientContact" class="java.lang.String"/>
+    <field name="dentistName" class="java.lang.String"/>
+    <field name="treatmentName" class="java.lang.String"/>
+    <field name="treatmentCode" class="java.lang.String"/>
+    <field name="consultationFee" class="java.lang.String"/>
+    <field name="treatmentCost" class="java.lang.String"/>
+    <field name="discount" class="java.lang.String"/>
+    <field name="tax" class="java.lang.String"/>
+    <field name="totalAmount" class="java.lang.String"/>
+    <field name="amountPaid" class="java.lang.String"/>
+    <field name="dueAmount" class="java.lang.String"/>
+    <field name="paymentStatus" class="java.lang.String"/>
+    <field name="paymentMethod" class="java.lang.String"/>
+
+    <title>
+        <band height="130" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="515" height="28"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="20" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Sunrise Dental Clinic]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="0" y="30" width="515" height="16"/>
+                <textElement textAlignment="Center">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{CLINIC_ADDRESS}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="46" width="515" height="16"/>
+                <textElement textAlignment="Center">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Tel: " + $P{CLINIC_PHONE} + "  |  Email: " + $P{CLINIC_EMAIL} + "  |  TIN: " + $P{CLINIC_TIN}]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement x="0" y="66" width="515" height="1"/>
+                <graphicElement lineWidth="2"/>
+            </line>
+            <staticText>
+                <reportElement x="0" y="72" width="250" height="22"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[TAX INVOICE / RECEIPT]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="260" y="72" width="255" height="22"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Bill No: " + $F{billNumber}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="94" width="255" height="16"/>
+                <textElement textAlignment="Right">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Billed on: " + $F{billDate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="110" width="255" height="16"/>
+                <textElement textAlignment="Right">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Appointment: " + $F{appointmentNumber}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <detail>
+        <band height="300" splitType="Stretch">
+            <rectangle>
+                <reportElement x="0" y="0" width="515" height="140">
+                    <printWhenExpression><![CDATA[true]]></printWhenExpression>
+                </reportElement>
+                <graphicElement fill="Solid">
+                    <color red="235" green="238" blue="245"/>
+                </graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="10" y="6" width="160" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[BILLED TO]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="170" y="6" width="335" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{patientName}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="28" width="160" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Patient Reg No]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="170" y="28" width="335" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{patientRegNo}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="46" width="160" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Address]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="170" y="46" width="335" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{patientAddress}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="64" width="160" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Contact]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="170" y="64" width="335" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{patientContact}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="84" width="160" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Dentist]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="170" y="84" width="335" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{dentistName}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="104" width="160" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Treatment]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="170" y="104" width="335" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{treatmentName} + " (" + $F{treatmentCode} + ")"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="124" width="160" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Payment Status]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="170" y="124" width="335" height="16"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{paymentStatus} + ($F{paymentMethod} != null ? " via " + $F{paymentMethod} : "")]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="10" y="160" width="210" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[DESCRIPTION]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="290" y="160" width="105" height="18"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[AMOUNT]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="10" y="184" width="210" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Consultation Fee]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="290" y="184" width="105" height="18"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["LKR " + $F{consultationFee}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="10" y="204" width="210" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Treatment Cost]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="290" y="204" width="105" height="18"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["LKR " + $F{treatmentCost}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="10" y="224" width="210" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Discount]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="290" y="224" width="105" height="18"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["- LKR " + $F{discount}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="10" y="244" width="210" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Tax (10%)]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="290" y="244" width="105" height="18"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["LKR " + $F{tax}]]></textFieldExpression>
+            </textField>
+
+            <line>
+                <reportElement x="10" y="268" width="385" height="1"/>
+            </line>
+            <staticText>
+                <reportElement x="10" y="272" width="210" height="24"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="13" isBold="true"/>
+                </textElement>
+                <text><![CDATA[TOTAL]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="290" y="272" width="105" height="24"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="13" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["LKR " + $F{totalAmount}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <summary>
+        <band height="90" splitType="Stretch">
+            <staticText>
+                <reportElement x="10" y="0" width="210" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[AMOUNT PAID]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="290" y="0" width="105" height="18"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA["LKR " + $F{amountPaid}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="22" width="210" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[OUTSTANDING]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="290" y="22" width="105" height="18"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["LKR " + $F{dueAmount}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="60" width="515" height="20"/>
+                <textElement textAlignment="Center">
+                    <font size="10" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Thank you for choosing " + $P{CLINIC_NAME} + "!  |  Generated " + $P{GENERATED_AT}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>
