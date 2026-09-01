@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="appointment_list" language="java" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="30" bottomMargin="30">
+
+    <parameter name="TITLE" class="java.lang.String"/>
+    <parameter name="CLINIC_NAME" class="java.lang.String"/>
+    <parameter name="CLINIC_ADDRESS" class="java.lang.String"/>
+    <parameter name="CLINIC_PHONE" class="java.lang.String"/>
+    <parameter name="CLINIC_EMAIL" class="java.lang.String"/>
+    <parameter name="CLINIC_TIN" class="java.lang.String"/>
+    <parameter name="CURRENCY" class="java.lang.String"/>
+    <parameter name="GENERATED_AT" class="java.lang.String"/>
+    <parameter name="PERIOD" class="java.lang.String"/>
+
+    <field name="appointmentNumber" class="java.lang.String"/>
+    <field name="patientName" class="java.lang.String"/>
+    <field name="patientContact" class="java.lang.String"/>
+    <field name="dentistName" class="java.lang.String"/>
+    <field name="treatmentName" class="java.lang.String"/>
+    <field name="date" class="java.lang.String"/>
+    <field name="startTime" class="java.lang.String"/>
+    <field name="status" class="java.lang.String"/>
+
+    <title>
+        <band height="86" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="515" height="26"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{CLINIC_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="28" width="515" height="18"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="13" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{TITLE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="48" width="515" height="16"/>
+                <textElement textAlignment="Center">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Period: " + $P{PERIOD}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="66" width="515" height="16"/>
+                <textElement textAlignment="Right">
+                    <font size="9" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Generated: " + $P{GENERATED_AT}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="24" splitType="Stretch">
+            <rectangle>
+                <reportElement x="0" y="0" width="515" height="24"/>
+                <graphicElement fill="Solid">
+                    <color red="31" green="58" blue="147"/>
+                </graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="6" y="3" width="78" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true" isForegroundColorSupported="true" foregroundColor="#FFFFFF"/>
+                </textElement>
+                <text><![CDATA[Appointment No]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="86" y="3" width="120" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Patient]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="208" y="3" width="78" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="288" y="3" width="48" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Time]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="338" y="3" width="100" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Dentist]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="440" y="3" width="70" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Status]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="22" splitType="Stretch">
+            <textField>
+                <reportElement x="6" y="2" width="78" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{appointmentNumber}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="86" y="2" width="120" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{patientName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="208" y="2" width="78" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="288" y="2" width="48" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{startTime}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="338" y="2" width="100" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{dentistName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="440" y="2" width="70" height="18"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement x="0" y="21" width="515" height="1"/>
+                <graphicElement lineWidth="1" lineColor="#DDDDDD"/>
+            </line>
+        </band>
+    </detail>
+</jasperReport>
