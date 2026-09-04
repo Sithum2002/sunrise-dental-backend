@@ -30,3 +30,5 @@ public interface PatientRepository extends JpaRepository<Patient, Long>, JpaSpec
 
     long countByCreatedDateAfter(java.time.LocalDateTime dateTime);
 }
+
+
